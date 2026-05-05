@@ -26,14 +26,6 @@
 - Node.js 18+
 - npm 或 yarn
 
-## 快速开始
-
-### 克隆项目
-
-```bash
-git clone https://github.com/yourusername/rustdns.git
-cd rustdns
-```
 
 ### 安装依赖
 
