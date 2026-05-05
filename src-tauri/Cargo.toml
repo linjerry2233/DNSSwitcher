@@ -1,0 +1,82 @@
+[package]
+name = "rustdns"
+version = "0.1.0"
+edition = "2021"
+description = "DNS Switcher for Windows"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+# 异步运行时
+tokio = { version = "1", features = ["full"] }
+
+# DNS 解析库
+hickory-proto = "0.24"
+hickory-resolver = "0.24"
+
+# HTTP 客户端（DoH）
+reqwest = { version = "0.12", features = ["json", "rustls-tls"], default-features = false }
+
+# TLS（DoT）
+tokio-rustls = "0.26"
+rustls = "0.23"
+rustls-native-certs = "0.7"
+
+# QUIC（DoQ）
+quinn = "0.11"
+
+# LRU 缓存
+lru = "0.12"
+
+# 并发数据结构
+dashmap = "6"
+
+# UUID
+uuid = { version = "1", features = ["v4"] }
+
+# 序列化
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# 时间
+chrono = { version = "0.4", features = ["serde"] }
+
+# 错误处理
+anyhow = "1"
+thiserror = "1"
+
+# 目录路径
+dirs = "5"
+
+# 日志
+tracing = "0.1"
+tracing-subscriber = "0.3"
+
+# 取消令牌
+tokio-util = { version = "0.7", features = ["rt"] }
+
+# Futures
+futures = "0.3"
+
+# Tauri
+tauri = { version = "2", features = [] }
+tauri-plugin-autostart = "2"
+tauri-plugin-single-instance = "2"
+
+# Windows 特定
+[target.'cfg(windows)'.dependencies]
+windows = { version = "0.58", features = [
+    "Win32_NetworkManagement_IpHelper",
+    "Win32_NetworkManagement_Ndis",
+    "Win32_Foundation",
+    "Win32_System_Registry",
+    "Win32_Security",
+    "Win32_System_Threading",
+    "Win32_UI_Shell",
+    "Win32_UI_WindowsAndMessaging",
+] }
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
