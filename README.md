@@ -28,12 +28,6 @@ A local DNS proxy and management tool for Windows platform with modern UI.
 
 ## Getting Started
 
-### Clone the repository
-
-```bash
-git clone https://github.com/yourusername/rustdns.git
-cd rustdns
-```
 
 ### Install dependencies
 
